@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import static android.R.attr.id;
+
 public class AddActivity extends AppCompatActivity {
 
     EditText etName, etContent, etReminder;
@@ -44,7 +46,8 @@ public class AddActivity extends AppCompatActivity {
 
                 DBHelper db = new DBHelper(AddActivity.this);
                 //Insert a task
-                db.insertTask(name,content);
+
+                db.insertTask(new Task(id,name,content));
                 Toast.makeText(AddActivity.this, "Inserted", Toast.LENGTH_SHORT).show();
                 db.close();
 

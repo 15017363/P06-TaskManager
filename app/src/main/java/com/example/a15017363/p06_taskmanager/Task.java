@@ -21,6 +21,14 @@ public class Task implements Serializable {
         return id;
     }
 
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public void setTaskContent(String taskContent) {
+        this.taskContent = taskContent;
+    }
+
     public String getTaskName() {
         return taskName;
     }

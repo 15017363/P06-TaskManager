@@ -50,11 +50,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public long insertTask(String newTaskName, String newTaskContent) {
+    public long insertTask(Task newtask) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TASK_NAME, newTaskName);
-        values.put(COLUMN_TASK_CONTENT, newTaskContent);
+        values.put(COLUMN_TASK_NAME, newtask.getTaskName());
+        values.put(COLUMN_TASK_CONTENT, newtask.getTaskContent());
         long result = db.insert(TABLE_TASK, null, values);
         if (result == -1){
             Log.d("DBHelper", "Insert failed");
@@ -105,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public int deleteTask(int id){
+    public int deleteTask(Long id){
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
